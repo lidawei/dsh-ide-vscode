@@ -1,0 +1,77 @@
+{
+  "name": "dsh-ide-vscode",
+  "displayName": "DSH IDE Bridge",
+  "description": "Exposes VS Code IDE context over loopback WebSocket for DSH",
+  "version": "0.1.0",
+  "publisher": "deepseek",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deepseek-ai/dsh-ide-vscode"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "DSH IDE Bridge",
+      "properties": {
+        "dshIde.sources.editor.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Push active editor and selection"
+        },
+        "dshIde.sources.editor.maxSelectionChars": {
+          "type": "number",
+          "default": 2048,
+          "description": "Max characters of selected text to include"
+        },
+        "dshIde.sources.breakpoints.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Push breakpoints and debug session summary"
+        },
+        "dshIde.logLevel": {
+          "type": "string",
+          "enum": [
+            "off",
+            "info",
+            "debug"
+          ],
+          "default": "info",
+          "description": "Output channel log level"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "dshIde.showStatus",
+        "title": "DSH IDE: Show Bridge Status"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "watch": "node esbuild.config.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "package": "node esbuild.config.mjs && vsce package --no-dependencies --allow-missing-repository"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/vscode": "^1.85.0",
+    "@types/ws": "^8.5.13",
+    "@vscode/vsce": "^3.2.1",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.7.0"
+  }
+}
