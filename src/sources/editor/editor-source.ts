@@ -38,10 +38,12 @@ export function mapSelection(
     start: {
       line: selection.start.line,
       character: selection.start.character,
+      column: selection.start.character + 1,
     },
     end: {
       line: selection.end.line,
       character: selection.end.character,
+      column: selection.end.character + 1,
     },
     isEmpty,
   };

@@ -1,2 +1,2 @@
 export { EditorSource } from './editor-source.js';
-export type { EditorSourceData } from './types.js';
+export type { EditorPosition, EditorSelection, EditorSourceData } from './types.js';

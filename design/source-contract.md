@@ -126,9 +126,15 @@ interface EditorFile {
   viewColumn?: number;
 }
 
+interface EditorPosition {
+  line: number; // 0-based
+  character: number; // 0-based
+  column: number; // 1-based
+}
+
 interface EditorSelection {
-  start: { line: number; character: number };
-  end: { line: number; character: number };
+  start: EditorPosition;
+  end: EditorPosition;
   isEmpty: boolean;
   text?: string;
 }

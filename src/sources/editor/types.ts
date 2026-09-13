@@ -8,9 +8,16 @@ export interface EditorFile {
   viewColumn?: number;
 }
 
+/** Cursor / selection position. `line` and `character` are 0-based (VS Code); `column` is 1-based. */
+export interface EditorPosition {
+  line: number;
+  character: number;
+  column: number;
+}
+
 export interface EditorSelection {
-  start: { line: number; character: number };
-  end: { line: number; character: number };
+  start: EditorPosition;
+  end: EditorPosition;
   isEmpty: boolean;
   text?: string;
 }

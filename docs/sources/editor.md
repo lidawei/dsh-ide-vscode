@@ -27,8 +27,8 @@ Expose which files the user is editing, which editor is active, and the current 
     "isDirty": false
   },
   "selection": {
-    "start": { "line": 10, "character": 4 },
-    "end": { "line": 10, "character": 18 },
+    "start": { "line": 10, "character": 4, "column": 5 },
+    "end": { "line": 10, "character": 18, "column": 19 },
     "isEmpty": false,
     "text": "getSnapshot"
   },
@@ -48,6 +48,8 @@ Expose which files the user is editing, which editor is active, and the current 
 | `activeFile` | No text editor focused (e.g. settings UI) |
 | `selection` | No active editor |
 | `selection.text` | Omitted when selection empty or &gt; max chars |
+
+`selection.start` / `selection.end`: `line` and `character` are **0-based** (VS Code `Position`); `column` is **1-based** (`character + 1`), matching the status bar.
 
 ## Limits
 
